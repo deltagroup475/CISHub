@@ -1,54 +1,103 @@
 html {
   height: 100%;
   width: 100%;
+  margin: 0;
 }
+
+a{
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+}
+
+footer{
+  position: relative;
+  background: black;
+  color: white;
+}
+
+footer a {
+  color: white;
+
+    &:hover {
+      color: #FFCC00;
+    }
+}
+
+
 
 /* Menu */
-li {
-  list-style-type: none;
-  display: inline;
-  justify-content: space-between;
+
+.menu {
+  background-color: black;
+  min-height: 100%;
+  padding: 1px;
 }
 
-#menu-items {
-  color: black;
+#menu-items li {
+  list-style-type: none;
+  display: inline-grid;
+  padding: 8px;
   text-align: center;
-  text-decoration: none;
-  font-size: 20px;
+  font-size: 22px;
+
+  &:last-child {
+    float: right;
+    margin-right: 2%;
+  }
+}
+
+#menu-items a {
+  color: white;
+  display: inline;
+
+  &:hover {
+    color: #FFCC00;
+  }
 }
 
 /* Landing Page */
 .welcome {
-  background-color: #FFCC00;
+  background: url(images/dots.png) no-repeat, #FFCC00;
   padding: 200px;
   position: relative;
 }
 
 h2 {
-  padding-top: 10px;
+  padding: 10px 0px 0px 0px;
 }
 
 #welcome-center {
   position: relative;
   background-color: white;
-  margin: auto;
-  height: 400px;
-  width: 1050px;
-  display: inline-block;
+  margin: 0 auto;
+  height: auto;
+  width: 70%;
+  border-radius: 60px;
   text-align: center;
   padding-bottom: 10px;
+}
+#welcome-center h1 {
+  margin-top: -50px;
+  letter-spacing: 1px;
+  font-size: 50px;
 }
 
 #welcome-btn {
   background-color: black;
   padding: 10px 20px;
+  margin-bottom: 15px;
   border: none;
   color: white;
   text-align: center;
-  text-decoration: none;
-  display: inline-flex;
-  justify-content: space-between;
   font-size: 15px;
+}
+
+#login-btn {
+  color: black;
+  padding: 5px 0 15px 0;
 }
 
 /* Faculty page */
