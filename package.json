@@ -1,0 +1,24 @@
+{
+  "name": "cishub",
+  "version": "1.0.0",
+  "description": "Delta Group CIS 475",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ksmartin301/CISHub.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ksmartin301/CISHub/issues"
+  },
+  "homepage": "https://github.com/ksmartin301/CISHub#readme",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.556.0"
+  },
+  "type": "module"
+}

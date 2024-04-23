@@ -1,28 +1,87 @@
-document.addEventListener("DOMContentLoaded", function() {
-  // use AJAX to get faculty table
-  fetch('facultyTable.php')
-      .then(response => response.json())
-      .then(data => {
-          const facultyGrid = document.getElementById('faculty-grid');
-        // Loop through each teacher and create a card
-                    data.forEach(faculty => {
-                        const card = document.createElement('div');
-                        card.classList.add('faculty-card');
+// This is used for getting user input.
+import { createInterface } from "readline/promises";
 
-                        // Add teacher's name
-                        const name = document.createElement('h2');
-                        name.textContent = faculty.name;
-                        card.appendChild(name);
+import {
+  S3Client,
+  PutObjectCommand,
+  CreateBucketCommand,
+  DeleteObjectCommand,
+  DeleteBucketCommand,
+  paginateListObjectsV2,
+  GetObjectCommand,
+} from "@aws-sdk/client-s3";
 
-                        // Add teacher's picture
-                        const picture = document.createElement('img');
-                        picture.src = faculty.picture_url;
-                        picture.alt = faculty.name;
-                        card.appendChild(picture);
+export async function main() {
+  // A region and credentials can be declared explicitly. For example
+  // `new S3Client({ region: 'us-east-1', credentials: {...} })` would
+  //initialize the client with those settings. However, the SDK will
+  // use your local configuration and credentials if those properties
+  // are not defined here.
+  const s3Client = new S3Client({});
 
-                        // Append card to the grid
-                        facultyGrid.appendChild(card);
-                    });
-                })
-                .catch(error => console.error('Error fetching teacher data:', error));
-        });
+  // Create an Amazon S3 bucket. The epoch timestamp is appended
+  // to the name to make it unique.
+  const bucketName = `test-bucket-${Date.now()}`;
+  await s3Client.send(
+    new CreateBucketCommand({
+      Bucket: bucketName,
+    })
+  );
+
+  // Put an object into an Amazon S3 bucket.
+  await s3Client.send(
+    new PutObjectCommand({
+      Bucket: bucketName,
+      Key: "my-first-object.txt",
+      Body: "Hello JavaScript SDK!",
+    })
+  );
+
+  // Read the object.
+  const { Body } = await s3Client.send(
+    new GetObjectCommand({
+      Bucket: bucketName,
+      Key: "my-first-object.txt",
+    })
+  );
+
+  console.log(await Body.transformToString());
+
+  // Confirm resource deletion.
+  const prompt = createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+  const result = await prompt.question("Empty and delete bucket? (y/n) ");
+  prompt.close();
+
+  if (result === "y") {
+    // Create an async iterator over lists of objects in a bucket.
+    const paginator = paginateListObjectsV2(
+      { client: s3Client },
+      { Bucket: bucketName }
+    );
+    for await (const page of paginator) {
+      const objects = page.Contents;
+      if (objects) {
+        // For every object in each page, delete it.
+        for (const object of objects) {
+          await s3Client.send(
+            new DeleteObjectCommand({ Bucket: bucketName, Key: object.Key })
+          );
+        }
+      }
+    }
+
+    // Once all the objects are gone, the bucket can be deleted.
+    await s3Client.send(new DeleteBucketCommand({ Bucket: bucketName }));
+  }
+}
+
+// Call a function if this file was run directly. This allows the file
+// to be runnable without running on import.
+import { fileURLToPath } from "url";
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  main();
+}
