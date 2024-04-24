@@ -2,6 +2,8 @@ html {
   height: 100%;
   width: 100%;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 a{
@@ -10,9 +12,11 @@ a{
 
 body {
   margin: 0;
+  background-color: #FFCC00;
 }
 
 footer{
+  padding-top: 2px;
   position: relative;
   background: black;
   color: white;
@@ -101,15 +105,30 @@ h2 {
 }
 
 /* Faculty page */
-.grid-container {
-  background-color: #FFCC00;
+.faculty-container {
+  width: 80%;
+  margin: 4rem auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
 }
 
-.faculty-card {
-  border: 1px solid #ccc;
-  padding: 10px;
-  text-align: center;
+.card {
+ border-radius: 10px;
+ padding: 2rem;
+ background-color: rgba(160, 78, 42, 0.8);
+ box-shadow: 0 0 .4rem .4rem rgba(0, 0, 0, 0.2);
+ transition: 0.3s ease-in;
+
+ &:hover{
+  background-color: rgba(230, 104, 50, 0.8)
+ }
+}
+
+#faculty-name {
+  color: white;
+  margin-bottom: .5rem;
+}
+#faculty-title {
+  color: white;
 }

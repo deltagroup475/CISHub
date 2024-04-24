@@ -2,7 +2,7 @@
   "name": "cishub",
   "version": "1.0.0",
   "description": "Delta Group CIS 475",
-  "main": "script.js",
+  "main": "script.cjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
