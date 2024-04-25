@@ -67,4 +67,4 @@ async function facultyPage() {
     })
 
   }
-  facultyPage()
+  facultyPage.listen(3000);
