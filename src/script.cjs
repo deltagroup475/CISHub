@@ -1,5 +1,5 @@
 // Load the AWS SDK for Node.js
-const { DynamoDBClient, ListTablesCommand, DescribeTableCommand, GetItemCommand } = require("@aws-sdk/client-dynamodb");
+const { DynamoDBClient, ListTablesCommand, DescribeTableCommand, GetItemCommand } = require("@aws-sdk/client-dynamodb";
 
 // Set the region
 const client = new DynamoDBClient({ region: "us-east-2" });
