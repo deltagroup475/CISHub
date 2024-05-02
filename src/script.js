@@ -1,8 +1,11 @@
 // Load the AWS SDK for Node.js
-const { DynamoDBClient, ListTablesCommand, DescribeTableCommand, GetItemCommand } = require("@aws-sdk/client-dynamodb";
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
+import { DynamoDBDocumentClient, GetItemCommand, DescribeTableCommand } from "@aws-sdk/lib-dynamodb";
+
 
 // Set the region
 const client = new DynamoDBClient({ region: "us-east-2" });
+const docClient = DynamoDBDocumentClient.from(client);
 
 //read table
 // async function read() {
@@ -22,13 +25,13 @@ const client = new DynamoDBClient({ region: "us-east-2" });
 
 //faculty page
 //this function display all faculty member's name and title on the faculty html page
-async function facultyPage() {
+export const facultyPage = async () => {
   // get table item count 
   const table = {
     TableName: "faculty_bio",
   };
   const details = new DescribeTableCommand(table);
-  const itemCount = await client.send(details);
+  const itemCount = await docClient.send(details);
 
   // faculty map
   let name;
@@ -40,7 +43,7 @@ async function facultyPage() {
   //loop through table items and collect name and title attributes into the 'info' map
   for (let x = 0; x < itemCount.Table.ItemCount; x++) {
 
-    PK = x.toString();
+    let PK = x.toString();
 
     const card = new GetItemCommand ({ 
       TableName: "faculty_bio",
@@ -48,23 +51,25 @@ async function facultyPage() {
         id: {N: PK}
       }
     });
-    const populate = await client.send(card);
+    const populate = await docClient.send(card);
 
     info.set(populate.Item.name, populate.Item.title);
   }
 console.log(info)
-  //const facultyContainer = document.querySelector('.faculty-container');
+  const facultyContainer = document.querySelector('.faculty-container');
 
   //print html to page
-     //cardData.map((info) =>{ //map for faculty cards displayed
-        // const postElement = document.createElement('div');
-        // postElement.classList.add('card');
-        // postElement.innerHTML= `
+     cardData.map((info) =>{ //map for faculty cards displayed
+         const postElement = document.createElement('div');
+         postElement.classList.add('card');
+         postElement.innerHTML= `
         // <h3 id="faculty-name">${info.name}</h3>
         // <p id="faculty-title">${info.title}</p>
-        // `
-        // facultyContainer.appendChild(postElement)
-    //})
+         `
+         facultyContainer.appendChild(postElement)
+    })
+
+    return cardData;
   };
 
   facultyPage()

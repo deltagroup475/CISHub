@@ -7,7 +7,7 @@ http.createServer(function (request, response) {
     var filePath;
 
     // Determine the file path based on the requested URL
-    if (request.url === '/') {
+    if (request.url === '/index') {
         filePath = './src/index.html';
     } else if (request.url === '/about') {
         filePath = './src/about.html';
