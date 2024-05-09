@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nadim Alkharouf Page</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+
+        .container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .image-container img {
+            max-width: 200px;
+            max-height: 200px;
+        }
+
+        .name {
+            text-align: center;
+            font-size: 24px;
+            margin-top: 240px;
+            /* Adjust as needed */
+        }
+
+        footer {
+            font-family: 'Times New Roman', Times, serif;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            position: relative;
+            background: black;
+            color: white;
+        }
+
+        #menu-items a {
+            color: white;
+            display: inline;
+
+            &:hover {
+                color: #FFCC00;
+            }
+        }
+
+        menu {
+            background-color: black;
+            min-height: 100%;
+            padding: 1px;
+        }
+
+        html {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        body {
+            margin: 0;
+        }
+
+
+        #menu li {
+            list-style-type: none;
+            display: inline-grid;
+            padding: 8px;
+            text-align: center;
+            font-family: 'Lato';
+            font-weight: bold;
+            font-size: 22px;
+
+            &:last-child {
+                float: right;
+                margin-right: 2%;
+            }
+        }
+
+        #menu-items li {
+            list-style-type: none;
+            display: inline-grid;
+            padding: 8px;
+            text-align: center;
+            font-family: 'Lato';
+            font-weight: bold;
+            font-size: 22px;
+
+            &:last-child {
+                float: right;
+                margin-right: 2%;
+            }
+        }
+
+        #pub-title li {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Menu -->
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <div class="menu">
+        <div id="logo">
+            <!--logo-->
+        </div>
+        <div>
+            <ul id="menu-items">
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="about.html">
+                        About
+                    </a>
+                </li>
+                <li>
+                    <a href="faculty.html">
+                        Faculty
+                    </a>
+                </li>
+                <li>
+                    <a href="Admin.html">
+                        Admin
+                    </a>
+                </li>
+                <li id="right-menu-item">
+                    <a href="login.html">
+                        Login
+                    </a>
+                </li>
+            </ul>
+        </div>
+</body>
+
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Nadim Alkharouf</h1>
+        </div>
+        <div class="image-container">
+            <img src="images/alkharouf-nadim-sq.jpg" alt="Nadim Alkharouf" </div>
+            <!-- Faculty page -->
+            <div class="grid-container" id="faculty-grid"></div>
+
+            <script src="script.js"></script>
+        </div>
+    </div>
+
+    <div class="pub-title">
+        <label for="publications">Publications: </label> <br>
+        <textarea id="publications" name="publications" rows="6" cols="50"></textarea><br>
+
+        <style>
+            #pub-title {
+                color: white;
+            }
+        </style>
+    </div>
+
+
+</body>
+<footer>
+    <p class="foot">
+        <a href="https://www.towson.edu" target="_blank">
+            Towson University
+        </a> <br>
+        <strong>
+            Phone:
+        </strong>
+        <a href="tel:4107042633">
+            410-704-2633
+        </a> <br>
+        <strong>
+            Fax:
+        </strong>
+        <a href="tel:4107043868">
+            410-704-3868
+        </a>
+    </p>
+
+
+    <p class="foot">
+        7800 York Road, Suite 406
+    </p>
+
+    <p class="foot">
+        Copyright &copy; 2024
+    </p>
+</footer>
+
+</html>

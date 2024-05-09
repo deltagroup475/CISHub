@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width" lang="en">
+  <title>CIS HUB</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <!-- Menu -->
+  <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+  <div class="menu">
+    <div id="logo">
+      <!--logo-->
+    </div>
+    <div>
+      <ul id="menu-items">
+        <li>
+          <a href="index.html">
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="about.html">
+            About
+          </a>
+        </li>
+        <li>
+          <a href="faculty.html">
+            Faculty
+          </a>
+        </li>
+        </li>
+        <li id="right-menu-item">
+          <a href="login.html">
+            Login
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+<h1>Admin Login Page</h1>
+
+<!-- Login Form -->
+<form action="/submit-login" method="POST">
+  <label for="username">Username:</label><br>
+  <input type="text" id="username" name="username"><br>
+  <label for="password">Password:</label><br>
+  <input type="password" id="password" name="password"><br><br>
+  <input type="submit" value="Login">
+</form>
+
+</html>
+<style>
+    body {
+        background-color: lightyellow;
+    }
+
+    form {
+        text-align: center;
+    }
+
+    form label, form input {
+        display: block;
+        margin: 10px auto;
+    }
+</style>
+<script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        window.location.href = "Admin.html";
+    });
+</script>
