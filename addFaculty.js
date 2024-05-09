@@ -15,18 +15,18 @@ export const addFaculty = async () => {
             }, //pass variables from 'add/drop faculty member form in admin dashboard'
             "education": { "SS": ["null"]
             },
-            "email": { "S": "btaylor@towson.edu"
+            "email": { "S": "pzaleppa@towson.edu"
             },
             "expertise": { "SS": ["null"]
             },
-            "name": { "S": "Blair Taylor"
+            "name": { "S": "Paige Flores"
             },
-            "title": { "S": "Professor,  Director of TU Center for Interdisiplinary and Innovative Cybersecurity"
+            "title": { "S": "Professor, Director of SecurEd - Cyber4All"
             },
             
-            "phone": { "S": "(410) 704-4560"
+            "phone": { "S": "NA"
             },
-            "office": { "S": "YR 463"
+            "office": { "S": "YR 206"
             },
             "links": { "SS": ["null"]
             },

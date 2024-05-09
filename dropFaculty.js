@@ -11,8 +11,8 @@ export const dropFaculty = async() => {
     const drop = new DeleteItemCommand({
         "TableName" : "faculty_bio",
        "Key": {
-            "id" : { "N" : "13"},
-            "name" : { "S" : "Blair Taylor" } //input from add/drop form in admin dashboard
+            "id" : { "N" : "14"},
+            "name" : { "S" : "Paige Flores" } //input from add/drop form in admin dashboard
         },
         "ReturnConsumedCapacity": "TOTAL",
     });
